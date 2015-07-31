@@ -4,8 +4,10 @@
 
 // Simple extension to replace lolcat images from
 // http://icanhascheezburger.com/ with loldog images instead.
-
+var urlList=new Array();
+urlList[0]="*://*.baidu.com/";
 chrome.webRequest.onBeforeRequest.addListener(
+/*
 	function(info) {
 		/*
 		var notification = webkitNotifications.createNotification(
@@ -15,18 +17,17 @@ chrome.webRequest.onBeforeRequest.addListener(
 		);
 		
 		notification.show();*/
-		
+		/*
 		new Notification(info.url, {
 			icon: '48.png',
 			body: 'Time to make the toast.'
 		  });
         return {cancel: true};
-	},
+	},*/
+	blockFunction,
   // filters
 	{
-		urls: [
-			"*://*.baidu.com/"
-		]
+		urls:urlList
 	},
   // extraInfoSpec
   ["blocking"]);

@@ -6,7 +6,7 @@
 				"webRequest", "webRequestBlocking",
 			"*://*/*"],
   "background": {
-    "scripts": ["loldogs.js", "background.js"]
+    "scripts": ["loldogs.js","util.js", "background.js"]
   },
 
   "manifest_version": 2
