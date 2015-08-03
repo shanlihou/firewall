@@ -18,12 +18,6 @@
 		index:window.localStorage.getItem('Tasks:index'),
 		//初始化
 		init:function(){
-			chrome.webRequest.onBeforeRequest.removeListener(blockFunction);
-			chrome.webRequest.onBeforeRequest.addListener(blockFunction,
-				{
-					urls:["*://*.bing.com/"]
-				},
-				["blocking"]);
 			if(!Tasks.index){
 				window.localStorage.setItem('Tasks:index',Tasks.index=0);
 			}
@@ -47,6 +41,7 @@
 					Tasks.AppendHtml(task);
 					Tasks.$txtTaskTitle.value='';
 					Tasks.hide(Tasks.$addItemInput).show(Tasks.$addItemDiv);
+					chrome.runtime.sendMessage({cmd: "mycmd"}, function(response) {  console.log(response); });
 				}
 				ev.preventDefault();
 			},true);
