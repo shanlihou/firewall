@@ -106,6 +106,7 @@
 					if(confirm('是否确定要删除此项？\r\n\r\n点击确定删除，点击取消置为未完成。')){
 						Tasks.Del(task);
 						Tasks.RemoveHtml(task);
+						chrome.runtime.sendMessage({cmd: "mycmd"}, function(response) {  console.log(response); });
 					}else{
 						task.is_finished=!task.is_finished;
 						var lbl=this.getElementsByTagName('label')[0];
