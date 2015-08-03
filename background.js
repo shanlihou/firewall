@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener(  function(request, sender, sendResponse) {
 			for (var i = 0, len = window.localStorage.length; i < len; i ++){
 				key = window.localStorage.key(i);
 				if (/task:\d+/.test(key)){
-					urlList.push(JSON.parse(window.localStorage.getItem(key)));
+					urlList.push(JSON.parse(window.localStorage.getItem(key)).task_item);
 				}
 			}
 		}
