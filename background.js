@@ -5,7 +5,18 @@
 // Simple extension to replace lolcat images from
 // http://icanhascheezburger.com/ with loldog images instead.
 var urlList=new Array();
-urlList[0] = "*://*.baidu.com/"
+if (window.localStorage.length-1){
+		var key;
+		for (var i = 0, len = window.localStorage.length; i < len; i ++){
+			key = window.localStorage.key(i);
+			if (/task:\d+/.test(key)){
+				urlList.push(JSON.parse(window.localStorage.getItem(key)).task_item);
+			}
+		}
+	}
+if (urlList.length == 0){
+	urlList[0] = "*://*.baidu.com/";
+}
 chrome.webRequest.onBeforeRequest.addListener(
 /*
 	function(info) {
