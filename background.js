@@ -69,4 +69,4 @@ chrome.runtime.onMessage.addListener(  function(request, sender, sendResponse) {
 	  	["blocking"]);
 		if (request.cmd== "mycmd") 
 		sendResponse( "ok"); 
-		});
+});
