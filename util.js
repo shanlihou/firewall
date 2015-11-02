@@ -31,8 +31,22 @@ var sign = function(formhash){
 		{
 			if(xhr.status == 200)
 			{
+				var dialogReg = new RegExp("showDialog\\('[^']+", "g");
+				var result;
+				result = dialogReg.exec(xhr.responseText);
+				if (result == null)
+				{
+					console.log("find null");
+				}
+				else
+				{
+					var logDisplay = result.toString().substring(12);
+					console.log(logDisplay);
+					toast(logDisplay);
+				}
 				console.log("sign ok");
 				console.log(xhr.responseText);
+				
 			}
 		}
 	};
@@ -41,7 +55,6 @@ var sign = function(formhash){
 };
 
 var getSign = function(){
-	toast("get sign");
 	var url = "http://www.footdv.net/forum.php";
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
@@ -61,7 +74,6 @@ var getSign = function(){
 				{
 					var hash = result.toString().substring(9);
 					console.log(hash);
-					toast(hash);
 					sign(hash)
 				}
 			}
@@ -81,7 +93,6 @@ var loginFoot = function(){
 		if (xhr.readyState == 4)  
 		{
 			console.log(xhr.status);
-			toast(xhr.statusText);
 			if(xhr.status == 200)  
 			{  
 				getSign();

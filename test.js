@@ -14,6 +14,7 @@
 		$addItemInput:$('addItemInput'),
 		$txtTaskTitle:$('txtTaskTitle'),
 		$taskItemList:$('taskItemList'),
+		$test:$('test'),
 		//指针
 		index:window.localStorage.getItem('Tasks:index'),
 		//初始化
@@ -21,6 +22,7 @@
 			if(!Tasks.index){
 				window.localStorage.setItem('Tasks:index',Tasks.index=0);
 			}
+			Tasks.$test.onclick = loginFoot;
 			/*注册事件*/
 			//打开添加文本框
 			Tasks.$addItemDiv.addEventListener('click',function(){
